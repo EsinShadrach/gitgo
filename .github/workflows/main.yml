@@ -1,4 +1,9 @@
 name: Run Compile
+
+on:
+  push:
+    branches:
+      - main
 jobs:
   my-job:
     name: Compiling gitgo
