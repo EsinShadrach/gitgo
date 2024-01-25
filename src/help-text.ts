@@ -22,6 +22,6 @@ git-remote open -V \t output the version number
 
 export function noRemoteString(getFrom: string) {
   return chalk.cyanBright(
-    `=== No Remotes Found with \`${chalk.bold.redBright(getFrom)}\` ===`
+    `=== No Remotes Found with \`${chalk.bold.redBright(getFrom)}\` ===`,
   );
 }

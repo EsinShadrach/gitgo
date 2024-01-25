@@ -15,6 +15,7 @@ async function main() {
       createUrl(createFrom);
       return;
     }
+
     break;
   }
 
@@ -22,4 +23,3 @@ async function main() {
 }
 
 main();
-

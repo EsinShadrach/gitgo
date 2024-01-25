@@ -62,7 +62,9 @@ export class GitRemote {
   async openRemoteUrl() {
     const url = `https://${this.gitRemoteUsername}/${this.gitRemoteRepoName}`;
     console.log(
-      `\nOpening URl for repo => ${chalk.greenBright(this.gitRemoteRepoName)}\n`
+      `\nOpening URl for repo => ${chalk.greenBright(
+        this.gitRemoteRepoName,
+      )}\n`,
     );
 
     orangeText("Opening URL...");
