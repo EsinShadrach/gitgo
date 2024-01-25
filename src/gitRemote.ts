@@ -1,4 +1,7 @@
 import { $ } from "bun";
+import { createClickableLink } from "./utils/link";
+import { orangeText } from "./utils/colors";
+import chalk from "chalk";
 
 /**
  * Represents a Git remote and provides methods to extract information from the remote string.
@@ -58,6 +61,14 @@ export class GitRemote {
    */
   async openRemoteUrl() {
     const url = `https://${this.gitRemoteUsername}/${this.gitRemoteRepoName}`;
-    await $`open ${url}`;
+    console.log(
+      `\nOpening URl for repo => ${chalk.greenBright(this.gitRemoteRepoName)}\n`
+    );
+
+    orangeText("Opening URL...");
+    const link = createClickableLink(url, url);
+    console.log(link);
+
+    // await $`open ${url}`;
   }
 }

@@ -1,25 +1,24 @@
-import { $ } from "bun";
-import { GitRemote } from "./gitRemote";
 import { helpText } from "./help-text";
+import { createUrl } from "./createUrl";
 
-const argurment = process.argv.slice(2);
+const cliArgs = process.argv.slice(2);
 
 async function main() {
-  argurment.forEach(async (arg) => {
+  for (const arg of cliArgs) {
     if (arg === "-h" || arg === "--help") {
       console.log(helpText);
+      return;
     }
-  });
 
-  const remoteUrl = $`git remote -v`.lines();
-  for await (const remote of remoteUrl) {
-    if (remote.includes("fetch")) {
-      const fetchRemoteUrl = `${remote.split("\t")[1]}`;
-      const gitRemoteUrl = fetchRemoteUrl.split(" ")[0];
-      const gitRemote = new GitRemote(gitRemoteUrl);
-      await gitRemote.openRemoteUrl();
+    if (arg === "--from" || arg === "-f" || arg === "--form") {
+      const createFrom = cliArgs[1];
+      createUrl(createFrom);
+      return;
     }
+    break;
   }
+
+  createUrl();
 }
 
 main();
