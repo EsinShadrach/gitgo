@@ -1,0 +1,15 @@
+{
+  "name": "gitgo",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "compile": "bun build ./src/index.ts --minify --compile --outfile build/gitgo"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
+
