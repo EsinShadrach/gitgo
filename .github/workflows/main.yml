@@ -1,0 +1,9 @@
+name: Run Compile
+jobs:
+  my-job:
+    name: Compiling gitgo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
+      - run: bun run compile
