@@ -1,3 +1,5 @@
+name: Upload Release Asset
+
 on:
   push:
     branches:
@@ -5,11 +7,6 @@ on:
   release:
     types:
       - created
-  pull_request:
-    branches:
-      - main
-
-name: Upload Release Asset
 
 jobs:
   build:
@@ -18,10 +15,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build project
-        run: |
-          bun install --production
-          bun compile
+
+      - name: Set up bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Run bun build
+        run: bun compile
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -32,6 +35,7 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
+
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
