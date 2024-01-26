@@ -15,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build project
-      - uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v1
         run: |
           bun install --production && bun compile
       - name: Create Release
@@ -34,7 +34,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./my-artifact.zip
-          asset_name: my-artifact.zip
-          asset_content_type: application/zip
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/go # Adjust the path to your compiled binary
+          asset_name: my-artifact # Change the name of the binary as needed
+          asset_content_type: application/octet-stream # Adjust content type based on your binary type
