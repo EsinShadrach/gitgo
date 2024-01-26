@@ -1,3 +1,16 @@
+on:
+  push:
+    branches:
+      - main
+  release:
+    types:
+      - created
+  pull_request:
+    branches:
+      - main
+
+name: Upload Release Asset
+
 jobs:
   build:
     name: Upload Release Asset
