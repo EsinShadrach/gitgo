@@ -3,7 +3,7 @@
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
-    "compile": "bun build ./src/index.ts --minify --compile --outfile build/gitgo"
+    "compile": "bun build ./src/index.ts --minify --compile --outfile ~/dev/cutom-cli/gitgo"
   },
   "devDependencies": {
     "@types/bun": "latest"
